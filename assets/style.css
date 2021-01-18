@@ -135,7 +135,7 @@ body{
   top:100px;
   left:325px;
 }
-#scoreContainer p{
+#scoreD p{
   position: absolute;
   display: block;
   width : 59px;
