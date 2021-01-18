@@ -13,9 +13,8 @@ const tracker = document.getElementById("tracker");
 const scoreD = document.getElementById("Score");
 const highscore = document.getElementById("highscore");
 let count = 0;
-  const questionTime = 10;
-const gaugeWidth = 150;
-const gaugeProgress = gaugeWidth/questionTime;
+  const quizTime = 40;
+
 let score = 0;
 
 let questions = [
@@ -72,38 +71,13 @@ function displayQuestion() {
   start.addEventListener("click", startQuiz);
   function startQuiz(){
     start.style.display = "none";
-    counterRender();
-    Timer = setInterval(counterRender,1000);
-    progressRender();
+  
+    Timer = setInterval(1000);
     displayQuestion();
     quiz.style.display = "block";
   }
 
-  function progressRender(){
-    for (let qIndex =0; qIndex <=lastQuestionIndex; qIndex++){
-        progressRender.innerHTML += "<div class='prog' id=" +qIndex +"></div>";
-    }
-  }
 
-  
- 
-function counterRender(){
-    if( count <=questionTime){
-      counter.innerHTML = count;
-      timeGauge.style.width = gaugeProgress * count + "px" ;
-      count++;
-    } else{
-      count = 0;
-      answerIsWrong();
-      if(runningQuestionIndex < lastQuestionIndex){
-        runningQuestionIndex++;
-        displayQuestion();
-      } else{
-        clearInterval(Timer);
-        scoreRender();
-      }
-    }
-  }
     function checkAnswer(answer){
       if (questions[runningQuestionIndex].correct == answer){
           score++;
@@ -117,22 +91,16 @@ function counterRender(){
         displayQuestion();
       } else{
           clearInterval(Timer);
-          scoreRender();
+        
       }
     }
-   function scoreRender(){
-    
-    }
-    function highscores(){
-      var highscore = localStorage.getItem("highscore");
-
-      if(highscore !== null){
-          if (score > highscore) {
-              localStorage.setItem("highscore", score);      
-          }
-      }
-      else{
-          localStorage.setItem("highscore", score);
-      }
-    }
-    
+   
+    highscore.addEventListener("click", highscorez);
+  function highscorez(){
+    start.style.display = "none";
+    displayScore();
+  
+  }
+  function displayScore(){
+  
+  }
