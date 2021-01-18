@@ -7,11 +7,12 @@
   <title>JavaScript Quiz</title>
 </head>
 <body>
-  
+  <div class="container">
+    <div id="home" class="flex-column flex-center">  
   <div id="start"> Start</div>
   <div id="quiz" style = "display : none"></div>
-  <div id="highscore"></div>
-  <div id="question"> <p>Question</p> </div>
+  <div id="highscore">highscore</div>
+  <div id="question"> <p>Question will be displayed here</p> </div>
   <div id="choices">
     <div class="choice" id="A" onclick="checkAnswer('A')"></div>
     <div class="choice" id="B" onclick="checkAnswer('B')"></div>
@@ -31,6 +32,8 @@
     <div id="score" style ="display : none;" >
       <img src="assets/Images/js_1.png"><p>50%</p>
     </div>
+  </div>
+</div>
     <script src="assets/script.js"></script>
   </body>
 
