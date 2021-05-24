@@ -3,13 +3,14 @@ body{
     color:seashell;
   font-size: 20px;
   font-family: monospace;
+  display: visible;
 }
 *{
   box-sizing: border-box;
   margin:0;
   padding: 0;
   font-size:62.5%;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Quattrocento";
 }
 
 #container{
@@ -58,6 +59,7 @@ body{
   transition: transform 150ms;
   transform: scale(1.03);
 }
+
 #highscore{
   font-size: 2.4rem;
   padding: 2rem 0;
@@ -74,6 +76,31 @@ body{
   box-shadow:0 0.4rem 1.4rem 0 rgb(24,85,199);
   transition: transform 150ms;
   transform: scale(1.03);
+}
+#highscoreContainer{
+  font-size: 5rem;
+  padding: 2rem 0;
+  width: 30rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color:chartreuse;
+  background: linear-gradient(90deg, rgb(24,85,199) 0%, rgb(10,99,240)100%);
+  border-radius: 4px;
+  display: none;
+}
+
+#scoreArea{
+  font-size: 2.4rem;
+  padding: 2rem 0;
+  width: 30rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color:chartreuse;
+  background: linear-gradient(90deg, rgb(24,85,199) 0%, rgb(10,99,240)100%);
+  border-radius: 4px;
+  display: none;
 }
 
 #question{
@@ -115,6 +142,7 @@ body{
 }
 
 #timer{
+  font-size: 3rem;
   position: absolute;
   height : 100px;
   width : 200px;
@@ -124,62 +152,9 @@ body{
 #counter{
   font-size: 3em;
 }
-#btimeGauge{
-  width : 150px;
-  height : 10px;
-  border-radius: 10px;
-  background-color: lightgray;
-  margin-left : 25px;
-}
-#timeGauge{
-  height : 10px;
-  border-radius: 10px;
-  background-color: mediumseagreen;
-  margin-top : -10px;
-  margin-left : 25px;
-}
-#progress{
-  width : 500px;
-  position: absolute;
-  bottom : 0px;
-  right : 0px;
-  padding:5px;
-  text-align: right;
-}
-.prog{
-  width : 25px;
-  height : 25px;
-  border: 1px solid #000;
-  display: inline-block;
-  border-radius: 50%;
-  margin-left : 5px;
-  margin-right : 5px;
-}
-#scoreContainer{
-  margin : 20px auto;
-  background-color: white;
-  opacity: 0.8;
-  height: 300px;
-  width : 700px;
-  border-radius: 5px;
-  box-shadow: 0px 5px 15px 0px;
-  position: relative;
-  display: none;
-}
-
-#score p{
-  position: absolute;
-  display: block;
-  width : 59px;
-  height :59px;
-  top:130px;
-  left:325px;
-  font-size: 1.5em;
-  font-weight: bold;
-  text-align: center;
-}
 
 @media screen and (max-width:768px) {
   .choice-container {
       min-width:40rem;
   }
+}

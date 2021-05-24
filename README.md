@@ -11,7 +11,7 @@ under master branch.
 
 ##Usage
 This program was designed to create a quiz in java using Dom elements and forms to create a series of questions and multiple choice answers that will apear on a page as each question is cycled through while under time. users will then input their name into a highscore function.
-
+![JavaQuiz](./assets/images/jquiz.png?raw=true "JavaQuiz")
 ##Credit
 edited by Kevin Miller (FlipFlaptheTraitor) using Git and VScode
 

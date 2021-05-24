@@ -3,37 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quattrocento">
   <link rel="stylesheet" href="assets/style.css">
   <title>JavaScript Quiz</title>
 </head>
 <body>
+  
   <div class="container">
     <div id="home" class="flex-column flex-center">  
-  <div id="start"> Start</div>
-  <div id="quiz" style = "display : none"></div>
-  <div id="highscore">highscore</div>
-  <div id="question"> <p>Question will be displayed here</p> </div>
-  <div id="choices">
-    <div class="choice" id="A" onclick="checkAnswer('A')"></div>
-    <div class="choice" id="B" onclick="checkAnswer('B')"></div>
-    <div class="choice" id="C" onclick="checkAnswer('C')"></div>
-    <div class="choice" id="D" onclick="checkAnswer('D')"></div>
+    <div id="start"> Start</div>
+    <div id="quiz" style = "display : none"></div>
+    <div id="highscore">highscore
+    </div>
+<!--Highscore area-->
+<div id=highscoreContainer>
+  <div id="high-scorePage">
+      <div id="highscore-header">
+          <h3>User Initials</h3>
+          <h3>Score</h3>
+      </div>
+      <div id = "highscore-initials"></div>
+      <div id = "highscore-score"></div>
+      <button id="btn-return" class="btn">Return to Quiz</button>
+  </div>
+  </div>
+
+
+    <div id="question"> <p>Question will be displayed here</p> </div>
+    <div id="choices">
+      <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+      <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+      <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+      <div class="choice" id="D" onclick="checkAnswer('D')"></div>
   </div>
   <div id="timer"> 
-    <div id="counter"> 6</div>
-    <div id="btimeGauge"> </div>
-    <div id="timeGauge"> </div>
+    <span id="counter">2 0</span>
     </div>
-    <div id ="progress"></div>
-  </div>
-    <div id="score"></div>
-  </div>
-  
-    <div id="score" style ="display : none;" >
-      <img src="assets/Images/js_1.png"><p>50%</p>
     </div>
-  </div>
-</div>
     <script src="assets/script.js"></script>
   </body>
 

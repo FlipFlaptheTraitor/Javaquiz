@@ -1,21 +1,31 @@
 const start = document.getElementById("start");
 const quiz = document.getElementById("quiz");
 const question = document.getElementById("question");
-
+const body = document.getElementById("body");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
-
-const counter = document.getElementById("counter");
+const divhid = document.getElementById("container");
 const timer = document.getElementById("timer");
+const counter = document.getElementById("counter");
 const tracker = document.getElementById("tracker");
-const scoreD = document.getElementById("Score");
-const highscore = document.getElementById("highscore");
-let count = 0;
-  const quizTime = 40;
 
+const scoreArea = document.getElementById("scoreArea");
+const scorespan = document.getElementById("score");
+const scoreBtn = document.getElementById("submitScore");
+var highscoreDisplayName = document.getElementById("highscore-initials");
+var highscoreDisplayScore = document.getElementById("highscore-score");
+var highscoreDiv = document.getElementById("high-scorePage");
+const highscore = document.getElementById("highscore");
+const highScoreArea = document.getElementById("highscoreContainer");
+const returnButton = document.getElementById("btn-return");
+
+let count = 0;
+let quizTime = 20;
 let score = 0;
+let trackQuestions = 0;
+let currentCorrectAnswer = 0;
 
 let questions = [
   {
@@ -34,7 +44,7 @@ let questions = [
     choiceB : " booleans",
     choiceC : " alerts",
     choiceD : "numbers",
-    correct : "B"
+    correct : "C"
 },
 {
   question : "How do you find the minimum of x and y using JavaScript?",
@@ -68,39 +78,92 @@ function displayQuestion() {
     choiceD.innerHTML = q.choiceD;
   }
 
-  start.addEventListener("click", startQuiz);
+ 
   function startQuiz(){
+    trackQuestions = 0;
+    score = 0;
     start.style.display = "none";
-  
-    Timer = setInterval(1000);
+    highscore.style.display = "none";
+    countDown() 
     displayQuestion();
     quiz.style.display = "block";
   }
 
+ 
 
+  function countDown(){
+    setInterval(function(){
+      if (quizTime <= 0) {
+        clearInterval(quizTime =0)
+        generateHighscores()
+      }
+      timer.innerHTML = quizTime
+      quizTime -=1
+    }, 1000)
+    if (quizTime == 0) {
+      generateHighscores();
+      
+    };
+
+  }
+
+ 
     function checkAnswer(answer){
       if (questions[runningQuestionIndex].correct == answer){
           score++;
-         
+        
       } else{
-    
+        quizTime -=10
       }
-      count = 0;
+
       if(runningQuestionIndex < lastQuestionIndex){
         runningQuestionIndex++;
+        
         displayQuestion();
-      } else{
-          clearInterval(Timer);
+      } else{ 
+        generateHighscores()
         
       }
     }
+
+
+    
+
+function generateHighscores(){
+  highscoreDisplayName.innerHTML = "";
+  highscoreDisplayScore.innerHTML = "";
+  var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+  for (i=0; i<highscores.length; i++){
+      var newNameSpan = document.createElement("li");
+      var newScoreSpan = document.createElement("li");
+      newNameSpan.textContent = highscores[i].name;
+      newScoreSpan.textContent = highscores[i].score;
+      highscoreDisplayName.appendChild(newNameSpan);
+      highscoreDisplayScore.appendChild(newScoreSpan);
+  }
+}
+function showHighscore(){
+
+  highscoreContainer.style.display = "flex";
+  highscoreDiv.style.display = "block";
+
+  generateHighscores();
+}
+
+
+
+
+
+
+
+
+      function restartQuiz(){
+        window.location.reload(false);
+      }
    
-    highscore.addEventListener("click", highscorez);
-  function highscorez(){
-    start.style.display = "none";
-    displayScore();
-  
-  }
-  function displayScore(){
-  
-  }
+    
+    start.addEventListener("click", startQuiz);
+    returnButton.addEventListener("click", restartQuiz);
+    highscore.addEventListener("click", showHighscore);
+    start.addEventListener("click", startQuiz);
+    returnButton.addEventListener("click", restartQuiz);
