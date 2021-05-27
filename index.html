@@ -15,21 +15,26 @@
     <div id="quiz" style = "display : none"></div>
     <div id="highscore">highscore
     </div>
+    
 <!--Highscore area-->
 <div id=highscoreContainer>
-  <div id="high-scorePage">
-      <div id="highscore-header">
           <h3>User Initials</h3>
-          <h3>Score</h3>
-      </div>
       <div id = "highscore-initials"></div>
+      <h3>Score</h3>
       <div id = "highscore-score"></div>
       <button id="btn-return" class="btn">Return to Quiz</button>
-  </div>
-  </div>
+    </div>
+  
+      <div id="Highscore-info">
+      <div id="finalScore"></div>
+      <input type="text" size = "40" placeholder="Enter you initials for high score" name="intials" id="initials"/>
+      <button id="submitScore">Submit Score</button>
+    </div>
 
+  
 
-    <div id="question"> <p>Question will be displayed here</p> </div>
+ 
+    <div id="question"> <p>Question will be displayed here <br> The timer will decrement by 10 if answered incorectly </p> </div>
     <div id="choices">
       <div class="choice" id="A" onclick="checkAnswer('A')"></div>
       <div class="choice" id="B" onclick="checkAnswer('B')"></div>
@@ -37,7 +42,7 @@
       <div class="choice" id="D" onclick="checkAnswer('D')"></div>
   </div>
   <div id="timer"> 
-    <span id="counter">2 0</span>
+    <span id="counter"> 30</span>
     </div>
     </div>
     <script src="assets/script.js"></script>
