@@ -25,12 +25,7 @@ const returnButton = document.getElementById("btn-return");
 
 let count = 0;
 let quizTime = 30;
-
 let score = 0;
-let trackQuestions = 0;
-let currentCorrectAnswer = 0;
-let timeLeft;
-let correct;
 let timerInterval;
 
 let questions = [
@@ -100,26 +95,27 @@ function displayQuestion() {
     }
   }
   function showHighscore(){
+    score = quizTime + score
+    highScoreArea.style.display = "block";
     question.style.display = "none";
     choices.style.display = "none";
-    highScoreArea.style.display = "flex";
-   //need to create add time left function
+   
+  }
+  function input(){
+    showHighscore()
+    HighscoreInfo.style.display = "block";
     clearInterval(timerInterval);
     initials.value = "";
     finalScore.innerHTML ="your score was:"+score;
     var savedHighscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
     var currentUser = initials.value.trim();
     var currentHighscore = {
-        name : currentUser,
+      initials : currentUser,
         score : score
-    };
-    highscoreContainer.style.display = "flex";
-    HighscoreInfo.style.display = "block";
+    };   
     savedHighscores.push(currentHighscore);
-    localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
-    
+    localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores)); 
   }
- 
   function startQuiz(){
     timerInterval = setInterval(function(){
       if (quizTime <= 0) {
@@ -132,7 +128,6 @@ function displayQuestion() {
     highscore.style.display = "none";
     displayQuestion();
     quiz.style.display = "block";
-    
   }
     function checkAnswer(answer){
       correct = questions[ runningQuestionIndex].correct;
@@ -145,18 +140,16 @@ function displayQuestion() {
         quizTime -=10
         runningQuestionIndex++;  
       displayQuestion();
-      } else{ 
-       generateHighscore()
-        
-      }
     }
-
+    if (runningQuestionIndex==lastQuestionIndex){
+      input()
+    }
+  }
     function restartQuiz(){
         window.location.reload(false);
       }
-   
-    
     start.addEventListener("click", startQuiz);
     returnButton.addEventListener("click", restartQuiz);
     highscore.addEventListener("click", showHighscore);
     start.addEventListener("click", startQuiz);
+    scoreBtn.addEventListener("click", generateHighscore);
